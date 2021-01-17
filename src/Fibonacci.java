@@ -1,9 +1,18 @@
 import org.junit.Test;
 
 /**
- * @author : fangxiaoming
+ * @author : fxm
  * @program : algorithm-train
- * @description : TODO
+ * @description : 动态规划算法
+ *  1、斐波那契算法不算是动态规划，存在重叠子问题，但是不是求最优子结构
+ *  2、动态规划有求最优子结构的特点，从最优子结构中得到整体最优
+ *  动态规划：如何列出正确的状态转移 方程
+ *      1、状态   也就是原问题和子问题中变化的变量
+ *      2、然后确定 dp 函数的定义
+ *      3、然后确定「选择」并择优   也就是对于每个状态，可以做出什么选择改变当 前状态
+ *      4、最后明确 base case  结束条件
+ *      只要通过  状态转移方程写出暴力递归解
+ *      明确「状态」 -> 定义 dp 数组/函数的含义 -> 明确「选择」-> 明确 base case。
  * @date : 2021-01-12 19:48
  **/
 public class Fibonacci {
