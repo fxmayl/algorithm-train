@@ -5,22 +5,22 @@ import org.junit.Test;
  * @program : algorithm-train
  * @description : 二分查找详解
  * 查找框架：
- *       int binarySearch(int[] nums, int target) {
- *          int left = 0, right = ...;
- *          while(...) {
- *              int mid = left + (right - left) / 2;
- *              if (nums[mid] == target) {
- *                  ...
- *              } else if (nums[mid] < target) {
- *                  left = ...
- *              } else if (nums[mid] > target) {
- *                  right = ...
- *              }
- *          }
- *          return ...;
- *      }
- *
- *     分析二分查找的一个技巧是:不要出现 else，而是把所有情况用 else if 写清 楚，这样可以清楚地展现所有细节
+ * int binarySearch(int[] nums, int target) {
+ * int left = 0, right = ...;
+ * while(...) {
+ * int mid = left + (right - left) / 2;
+ * if (nums[mid] == target) {
+ * ...
+ * } else if (nums[mid] < target) {
+ * left = ...
+ * } else if (nums[mid] > target) {
+ * right = ...
+ * }
+ * }
+ * return ...;
+ * }
+ * <p>
+ * 分析二分查找的一个技巧是:不要出现 else，而是把所有情况用 else if 写清 楚，这样可以清楚地展现所有细节
  * @date : 2021-01-17 11:05
  **/
 public class BinarySearch {
@@ -40,6 +40,12 @@ public class BinarySearch {
     @Test
     public void test3() {
         int i = leftBound2(new int[]{1, 1, 1, 1, 1, 2, 2, 2, 3}, 3);
+        System.out.println(i);
+    }
+
+    @Test
+    public void test31() {
+        int i = leftBound3(new int[]{1, 1, 1, 1, 1, 2, 2, 2, 3}, 2);
         System.out.println(i);
     }
 
@@ -124,6 +130,7 @@ public class BinarySearch {
 
     /**
      * 寻找左侧边界的二分搜索  使用区间[left, right]
+     *
      * @param nums
      * @param target
      * @return
@@ -155,7 +162,39 @@ public class BinarySearch {
     }
 
     /**
+     * 查找第一个大于等于给定值的下标
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    int leftBound3(int[] nums, int target) {
+        if (nums.length <= 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        // 使用区间[left, right], 跳出循环的条件是  left == right + 1
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] >= target) {
+                // 找到大于等于 target 时判断是否为第一个元素或者 此值小于tartget
+                // 如果为第一个元素，则直接返回即可，否则判断是否mid-1位置小于target
+                // 是则直接返回，不是则将right设置为mid-1
+                if (mid == 0 || nums[mid - 1] < target) {
+                    return mid;
+                }
+                right = mid - 1;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
      * 寻找右侧边界的二分查找  使用区间[left, right)
+     *
      * @param nums
      * @param target
      * @return
@@ -191,6 +230,7 @@ public class BinarySearch {
 
     /**
      * 寻找右侧边界的二分查找  使用区间[left, right]
+     *
      * @param nums
      * @param target
      * @return
