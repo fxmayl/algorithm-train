@@ -55,6 +55,12 @@ public class BinarySearch {
         System.out.println(i);
     }
 
+    @Test
+    public void test6() {
+        int i = rightBound3(new int[]{0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2}, 0);
+        System.out.println(i);
+    }
+
 
     /**
      * 寻找一个数(基本的二分搜索)
@@ -215,5 +221,32 @@ public class BinarySearch {
         }
 
         return left - 1;
+    }
+
+    int rightBound3(int[] nums, int target) {
+        if (nums.length <= 0) {
+            return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        // 使用区间[left, right), 跳出循环的条件是  left == right + 1
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                // 找到 target 时判断是否是最后一个元素或者下一个元素是否等于target
+                // 是最后一个元素则直接返回，否则接着判断下一个元素是否等于target， 不是则直接返回
+                // 否则将left设置为mid + 1
+                if (mid == nums.length - 1 || nums[mid + 1] != target) {
+                    return mid;
+                }
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            }
+        }
+
+        return -1;
     }
 }
