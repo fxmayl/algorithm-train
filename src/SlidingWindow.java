@@ -19,6 +19,12 @@ public class SlidingWindow {
         System.out.println(checkIn("hellowtorld", "oow"));
     }
 
+    @Test
+    public void test3() {
+        System.out.println(lengthOfLongestSubstring(
+                "aabab"));
+    }
+
     /**
      * 最小覆盖字串
      * <p>
@@ -120,5 +126,32 @@ public class SlidingWindow {
             }
         }
         return false;
+    }
+
+    /**
+     * 查找字符串s中最长的无重复的字串，返回最长字串的长度
+     *
+     * @return
+     */
+    private int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> window = new HashMap<>();
+        int right = 0;
+        int left = 0;
+        int res = 0;
+
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            right++;
+            window.put(c, window.getOrDefault(c, 0) + 1);
+
+            // 字母的数量大于1表示窗口存在重复的字符
+            while (window.get(c) != null && window.get(c) > 1) {
+                char leftChar = s.charAt(left);
+                left++;
+                window.put(leftChar, window.get(leftChar) - 1);
+            }
+            res = Math.max(res, right - left);
+        }
+        return res;
     }
 }
