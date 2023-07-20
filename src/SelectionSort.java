@@ -9,31 +9,22 @@
  * @author fxm
  * @date 2023/7/20 9:26 上午
  */
-public class SelectionSort {
-    private static boolean less(int v, int w) {
-        return v < w;
-    }
-
-    private static void exchange(int[] a, int i, int j) {
-        int v = a[j];
-        a[j] = a[i];
-        a[i] = v;
-    }
-
-    public static void sort(int[] a) {
+public class SelectionSort implements Sort {
+    @Override
+    public void sort(int[] a) {
         for (int i = 0; i < a.length; i++) {
             int min = i;
             for (int j = i + 1; j < a.length; j++) {
-                if (less(a[j], a[min])) {
+                if (Sort.less(a[j], a[min])) {
                     min = j;
                 }
             }
-            exchange(a, min, i);
+            Sort.exchange(a, min, i);
         }
     }
 
     public static void main(String[] args) {
         int[] a = {3, 2, 1, 5, 4, 9, 6};
-        sort(a);
+        new SelectionSort().sort(a);
     }
 }
