@@ -1,7 +1,7 @@
 /**
  * 排序模版
  *
- * @author fangxiaoming
+ * @author fxm
  * @date 2023/7/20 9:37 上午
  */
 public interface Sort {
