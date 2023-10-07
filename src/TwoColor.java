@@ -14,7 +14,7 @@ public class TwoColor {
         color = new boolean[graph.V()];
         for (int s = 0; s < graph.V(); s++) {
             if (!marked[s]) {
-
+                dfs(graph, s);
             }
         }
     }
