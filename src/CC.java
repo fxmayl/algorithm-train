@@ -1,7 +1,7 @@
 /**
  * 使用深度优先搜索找出图中的所有连通分量
  *
- * @author fangxiaoming
+ * @author fxm
  * @date 2023/9/28 10:17 上午
  */
 public class CC {
