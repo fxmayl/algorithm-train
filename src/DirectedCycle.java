@@ -3,7 +3,7 @@ import java.util.Stack;
 /**
  * 有向图中的环
  *
- * @author fangxiaoming
+ * @author fxm
  * @date 2023/10/10 11:25 上午
  */
 public class DirectedCycle {

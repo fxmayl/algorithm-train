@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * 有向图
  *
- * @author fangxiaoming
+ * @author fxm
  * @date 2023/10/10 11:20 上午
  */
 public class Digraph {
