@@ -38,6 +38,10 @@ public class DepthFirstOrder {
         reversePost.push(v);
     }
 
+    public Stack<Integer> reversePost() {
+        return reversePost;
+    }
+
     public static void main(String[] args) {
         Digraph digraph = new Digraph(4);
         digraph.addEdge(0, 1);
