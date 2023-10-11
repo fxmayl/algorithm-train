@@ -1,7 +1,7 @@
 /**
  * 拓扑排序
  *
- * @author fangxiaoming
+ * @author fxm
  * @date 2023/10/10 3:20 下午
  */
 public class Topological {
