@@ -30,19 +30,19 @@ public class KruskalMST {
     private Queue<Edge> mst;
 
     public KruskalMST(EdgeWeightedGraph G) {
-        mst = new LinkedList<>();
-        PriorityQueue<Edge> pq = new PriorityQueue<>();
-        for (Edge e : G.edges()) {
-            pq.insert(e);
-        }
-        UF uf = new UF(G.V());
-        while (!pq.isEmpty() && mst.size() < G.V() - 1) {
-            Edge e = pq.remove(); // 从pq得到权重最小的边和它的顶点
-            int v = e.either(), w = e.other(v);
-            if (uf.connected(v, w)) continue; // 忽略失效的边
-            uf.union(v, w); // 合并分量
-            mst.add(e); // 将边添加到最小生成树中
-        }
+//        mst = new LinkedList<>();
+//        PriorityQueue<Edge> pq = new PriorityQueue<>();
+//        for (Edge e : G.edges()) {
+//            pq.insert(e);
+//        }
+//        UF uf = new UF(G.V());
+//        while (!pq.isEmpty() && mst.size() < G.V() - 1) {
+//            Edge e = pq.remove(); // 从pq得到权重最小的边和它的顶点
+//            int v = e.either(), w = e.other(v);
+//            if (uf.connected(v, w)) continue; // 忽略失效的边
+//            uf.union(v, w); // 合并分量
+//            mst.add(e); // 将边添加到最小生成树中
+//        }
     }
 
     public Iterable<Edge> edges() {
