@@ -54,8 +54,6 @@ public class LazyPrimMST {
      *      算法会进行 V 次插入操作，V 次删除最小元素的操作和(在最坏情况下)E次改变优先级的操作。
      *      已知在基于堆实现的索引优先队列中所有这些操作的增长数量级为 logV, 所以将所有这些加起来可知算法所需时间和 ElogV 成正比。
      *
-     *  主要思想是按照边的权重顺序(从小到大)处理它们， 将边加入最小生成树中，加入的边不会与已经加入的边构成环，直到树中含有 V-1 条边为止
-     *
      * public class PrimMST {
      *      private Edge[] edgeTo; // 距离树最近的边
      *      private double[] distTo; // distTo[w] = edgeTo[w].weight()
